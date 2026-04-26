@@ -37,10 +37,14 @@ namespace SpaceAgencyApp
 				dgvPlanets.Columns["desc_ru"].Visible = false;
 
 				// Սիրունացնում ենք վերնագրերը
-				dgvPlanets.Columns["name_am"].HeaderText = "Մոլորակ";
-				dgvPlanets.Columns["distance_from_earth"].HeaderText = "Հեռավորություն";
-				dgvPlanets.Columns["price_per_ticket"].HeaderText = "Տոմսի արժեք";
-				dgvPlanets.Columns["desc_am"].HeaderText = "Նկարագրություն";
+				// Փոխում ենք սյունակների վերնագրերը ռուսերեն
+				dgvPlanets.Columns["name_am"].Visible = false; // Հայերենը թաքցնում ենք
+				dgvPlanets.Columns["name_ru"].Visible = true;
+				dgvPlanets.Columns["name_ru"].HeaderText = "Планета";
+				dgvPlanets.Columns["distance_from_earth"].HeaderText = "Расстояние (млн км)";
+				dgvPlanets.Columns["price_per_ticket"].HeaderText = "Цена билета";
+				dgvPlanets.Columns["desc_ru"].Visible = true;
+				dgvPlanets.Columns["desc_ru"].HeaderText = "Описание";
 
 				// Աղյուսակը ձգում ենք ամբողջ լայնությամբ
 				dgvPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

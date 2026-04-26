@@ -14,9 +14,15 @@ namespace SpaceAgencyApp
 		[STAThread]
 		static void Main()
 		{
-			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+
+			LoginForm loginForm = new LoginForm(); // Միայն սահմանում ենք
+
+			if (loginForm.ShowDialog() == DialogResult.OK) // Այստեղ ենք ցույց տալիս
+			{
+				Application.Run(new Form1());
+			}
+			// ԱՅՍՏԵՂ ԱՎԱՐՏՎՈՒՄ Է
 		}
 	}
 }
