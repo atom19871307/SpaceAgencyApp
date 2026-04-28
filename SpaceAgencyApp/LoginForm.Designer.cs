@@ -36,7 +36,7 @@
 			// btnLogin
 			// 
 			this.btnLogin.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnLogin.Location = new System.Drawing.Point(262, 213);
+			this.btnLogin.Location = new System.Drawing.Point(95, 214);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size(139, 40);
 			this.btnLogin.TabIndex = 0;
@@ -46,23 +46,25 @@
 			// 
 			// txtUser
 			// 
-			this.txtUser.Location = new System.Drawing.Point(262, 278);
+			this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.txtUser.Location = new System.Drawing.Point(95, 89);
 			this.txtUser.Name = "txtUser";
-			this.txtUser.Size = new System.Drawing.Size(100, 22);
+			this.txtUser.Size = new System.Drawing.Size(139, 38);
 			this.txtUser.TabIndex = 1;
 			// 
 			// txtPass
 			// 
-			this.txtPass.Location = new System.Drawing.Point(262, 323);
+			this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.txtPass.Location = new System.Drawing.Point(95, 133);
 			this.txtPass.Name = "txtPass";
-			this.txtPass.Size = new System.Drawing.Size(100, 22);
+			this.txtPass.Size = new System.Drawing.Size(139, 38);
 			this.txtPass.TabIndex = 2;
 			// 
 			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(359, 369);
 			this.Controls.Add(this.txtPass);
 			this.Controls.Add(this.txtUser);
 			this.Controls.Add(this.btnLogin);

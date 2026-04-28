@@ -67,12 +67,54 @@ namespace SpaceAgencyApp
 				{
 					double timeHours = distanceKm / speedKmh;
 
-					if (timeHours < 1)
-						lblResult.Text = $"Продолжительность полета: {(timeHours * 60):F1} минут";
-					else if (timeHours < 24)
-						lblResult.Text = $"Продолжительность полета: {timeHours:F1} часов";
+					// Հաշվում ենք ընդհանուր օրերը
+					int totalDays = (int)(timeHours / 24);
+
+					int years = totalDays / 365;       // Տարիները
+					int days = totalDays % 365;        // Մնացած օրերը
+
+					// Ցուցադրում ենք արդյունքը ռուսերեն
+					if (years > 0)
+					{
+						lblResult.Text = $"Время полета: {years} лет и {days} дней";
+					}
+					else if (totalDays > 0)
+					{
+						lblResult.Text = $"Время полета: {totalDays} дней";
+					}
 					else
-						lblResult.Text = $"Продолжительность полета: {(timeHours / 24):F1} день/дней";
+					{
+						// Եթե 1 օրից պակաս է, ցույց է տալիս ժամերը (օրինակ՝ 15.4 часов)
+						lblResult.Text = $"Время полета: {timeHours:F1} часов";
+					}
+					if (dgvPlanets.CurrentRow != null)
+					{
+						decimal totalPrice = Convert.ToDecimal(dgvPlanets.CurrentRow.Cells["price_per_ticket"].Value);
+						lblPrice.Text = $"Стоимость билета: {totalPrice:N0} руб.";
+						lblPrice.Visible = true; // Համոզվիր, որ Label-ը տեսանելի է
+					}
+
+					lblResult.ForeColor = Color.Cyan;
+				}
+			}
+		}
+
+		private void dgvPlanets_SelectionChanged(object sender, EventArgs e)
+		{
+			if (dgvPlanets.CurrentRow != null)
+			{
+				// Վերցնում ենք մոլորակի անունը name_en սյունակից (որ ֆայլի անունը ճիշտ լինի)
+				string planetName = dgvPlanets.CurrentRow.Cells["name_en"].Value.ToString();
+				string folderPath = Application.StartupPath + @"\Images\";
+				string fullPath = folderPath + planetName + ".jpg";
+
+				if (System.IO.File.Exists(fullPath))
+				{
+					pbPlanet.Image = Image.FromFile(fullPath);
+				}
+				else
+				{
+					pbPlanet.Image = null; // Եթե նկարը չկա, դատարկ ենք թողնում
 				}
 			}
 		}
