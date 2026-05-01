@@ -49,53 +49,43 @@ namespace SpaceAgencyApp
 				// Աղյուսակը ձգում ենք ամբողջ լայնությամբ
 				dgvPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			}
-		} 
+		}
 
 		private void btnCalculate_Click(object sender, EventArgs e)
 		{
-			if (dgvPlanets.CurrentRow != null && cbShips.SelectedItem != null)
+			// 1. Որոշում ենք արագությունը ըստ նավի
+			// Սա կվերցնի "ship_speed" սյունակի արժեքը հենց  SQL բազայից
+			double speedKmh = Convert.ToDouble(((DataRowView)cbShips.SelectedItem)["ship_speed"]);
+
+			// 2. Ստուգում ենք՝ արդյոք մոլորակ ընտրված է
+			if (dgvPlanets.CurrentRow != null)
 			{
-				// 1. Վերցնում ենք հեռավորությունը միլիոնավոր կմ-ով
-				double distanceRaw = Convert.ToDouble(dgvPlanets.CurrentRow.Cells["distance_from_earth"].Value);
-				double distanceKm = distanceRaw * 1000000;
+				// Վերցնում ենք հեռավորությունը բազայից
+				double distanceKm = Convert.ToDouble(dgvPlanets.CurrentRow.Cells["distance_from_earth"].Value);
 
-				// 2. Վերցնում ենք նավի արագությունը կմ/ժ-ով
-				DataRowView selectedShip = (DataRowView)cbShips.SelectedItem;
-				double speedKmh = Convert.ToDouble(selectedShip["ship_speed"]);
+				// Հաշվարկում ենք ժամանակը
+				double timeHours = distanceKm / speedKmh;
+				int totalDays = (int)(timeHours / 24);
+				int years = totalDays / 365;
+				int days = totalDays % 365;
 
-				if (speedKmh > 0)
+				// Ցուցադրում ենք արդյունքը
+				if (years > 0)
 				{
-					double timeHours = distanceKm / speedKmh;
-
-					// Հաշվում ենք ընդհանուր օրերը
-					int totalDays = (int)(timeHours / 24);
-
-					int years = totalDays / 365;       // Տարիները
-					int days = totalDays % 365;        // Մնացած օրերը
-
-					// Ցուցադրում ենք արդյունքը ռուսերեն
-					if (years > 0)
-					{
-						lblResult.Text = $"Время полета: {years} лет и {days} дней";
-					}
-					else if (totalDays > 0)
-					{
-						lblResult.Text = $"Время полета: {totalDays} дней";
-					}
-					else
-					{
-						// Եթե 1 օրից պակաս է, ցույց է տալիս ժամերը (օրինակ՝ 15.4 часов)
-						lblResult.Text = $"Время полета: {timeHours:F1} часов";
-					}
-					if (dgvPlanets.CurrentRow != null)
-					{
-						decimal totalPrice = Convert.ToDecimal(dgvPlanets.CurrentRow.Cells["price_per_ticket"].Value);
-						lblPrice.Text = $"Стоимость билета: {totalPrice:N0} руб.";
-						lblPrice.Visible = true; // Համոզվիր, որ Label-ը տեսանելի է
-					}
-
-					lblResult.ForeColor = Color.Cyan;
+					lblResult.Text = $"Время полета: {years} лет и {days} дней";
 				}
+				else if (totalDays > 0)
+				{
+					lblResult.Text = $"Время полета: {totalDays} дней";
+				}
+				else
+				{
+					lblResult.Text = $"Время полета: {timeHours:F1} часов";
+				}
+
+				// Տոմսի արժեքը
+				decimal totalPrice = Convert.ToDecimal(dgvPlanets.CurrentRow.Cells["price_per_ticket"].Value);
+				lblPrice.Text = $"Стоимость билета: {totalPrice:N0} руб.";
 			}
 		}
 
