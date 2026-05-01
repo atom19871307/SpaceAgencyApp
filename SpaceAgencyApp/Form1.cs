@@ -60,8 +60,9 @@ namespace SpaceAgencyApp
 			// 2. Ստուգում ենք՝ արդյոք մոլորակ ընտրված է
 			if (dgvPlanets.CurrentRow != null)
 			{
+				// Բազմապատկում ենք 1 միլիոնով, որպեսզի դառնա իրական կիլոմետր
 				// Վերցնում ենք հեռավորությունը բազայից
-				double distanceKm = Convert.ToDouble(dgvPlanets.CurrentRow.Cells["distance_from_earth"].Value);
+				double distanceKm = Convert.ToDouble(dgvPlanets.CurrentRow.Cells["distance_from_earth"].Value) * 1000000;
 
 				// Հաշվարկում ենք ժամանակը
 				double timeHours = distanceKm / speedKmh;

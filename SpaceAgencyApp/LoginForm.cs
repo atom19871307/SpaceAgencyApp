@@ -31,5 +31,10 @@ namespace SpaceAgencyApp
 				MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		private void txtUser_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

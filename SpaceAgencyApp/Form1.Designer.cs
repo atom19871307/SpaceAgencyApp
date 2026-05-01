@@ -106,7 +106,7 @@
 			// pbPlanet
 			// 
 			this.pbPlanet.BackColor = System.Drawing.Color.Transparent;
-			this.pbPlanet.Location = new System.Drawing.Point(14, 500);
+			this.pbPlanet.Location = new System.Drawing.Point(12, 548);
 			this.pbPlanet.Name = "pbPlanet";
 			this.pbPlanet.Size = new System.Drawing.Size(221, 151);
 			this.pbPlanet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -119,7 +119,7 @@
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-			this.label1.Location = new System.Drawing.Point(50, 449);
+			this.label1.Location = new System.Drawing.Point(31, 513);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(185, 32);
 			this.label1.TabIndex = 6;
