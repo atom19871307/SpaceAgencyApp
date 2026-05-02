@@ -74,7 +74,7 @@
 			this.dgvPlanets.Name = "dgvPlanets";
 			this.dgvPlanets.RowHeadersWidth = 51;
 			this.dgvPlanets.RowTemplate.Height = 24;
-			this.dgvPlanets.Size = new System.Drawing.Size(1348, 355);
+			this.dgvPlanets.Size = new System.Drawing.Size(1513, 355);
 			this.dgvPlanets.TabIndex = 2;
 			this.dgvPlanets.SelectionChanged += new System.EventHandler(this.dgvPlanets_SelectionChanged);
 			// 
