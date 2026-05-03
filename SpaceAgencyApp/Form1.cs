@@ -49,6 +49,10 @@ namespace SpaceAgencyApp
 				// Աղյուսակը ձգում ենք ամբողջ լայնությամբ
 				dgvPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			}
+			foreach (DataGridViewRow row in dgvPlanets.Rows)
+			{
+				row.HeaderCell.Value = (row.Index + 1).ToString();
+			}
 		}
 
 		private void btnCalculate_Click(object sender, EventArgs e)

@@ -32,9 +32,43 @@ namespace SpaceAgencyApp
 			}
 		}
 
-		private void txtUser_TextChanged(object sender, EventArgs e)
+		private void LoginForm_Load(object sender, EventArgs e)
 		{
+			this.ActiveControl = txtUser;
+		}
 
+		private void txtUser_Enter(object sender, EventArgs e)
+		{
+			if (txtUser.Text == "Login")
+			{
+				txtUser.Text = ""; // Մաքրում է տեքստը
+			}
+		}
+
+		private void txtUser_Leave(object sender, EventArgs e)
+		{
+			if (txtUser.Text == "")
+			{
+				txtUser.Text = "Login"; // Հետ է բերում հուշումը
+			}
+		}
+
+		private void txtPass_Enter(object sender, EventArgs e)
+		{
+			if (txtPass.Text == "Password")
+			{
+				txtPass.Text = "";
+				txtPass.UseSystemPasswordChar = true; // Միացնում է աստղիկները
+			}
+		}
+
+		private void txtPass_Leave(object sender, EventArgs e)
+		{
+			if (txtPass.Text == "")
+			{
+				txtPass.Text = "Password";
+				txtPass.UseSystemPasswordChar = false; // Անջատում է աստղիկները, որ բառը երևա
+			}
 		}
 	}
 }
